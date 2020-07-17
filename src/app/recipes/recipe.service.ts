@@ -13,22 +13,12 @@ export class RecipeService {
 
   };
 
-  private recipes: Recipe[] = [
-    new Recipe('A Test recipe',
-    'a test',
-    'https://cdn.pixabay.com/photo/2016/06/15/19/09/food-1459693_960_720.jpg',
-    [
-      new Ingredient('Meat', 1),
-      new Ingredient('Veggie', 2)
-    ]),
-    new Recipe('Another Test recipe',
-    'a test',
-    'https://cdn.pixabay.com/photo/2016/06/15/19/09/food-1459693_960_720.jpg',
-    [
-      new Ingredient('Meat', 2),
-      new Ingredient('Noodle', 2)
-    ])
-  ];
+  private recipes: Recipe[] = [];
+
+  setRecipes(recipes: Recipe[]) {
+    this.recipes = recipes;
+    this.recipesChanged.next(this.recipes.slice());
+  }
 
   getRecipes() {
     return this.recipes.slice();
